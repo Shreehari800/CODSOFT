@@ -1,0 +1,45 @@
+package codsofttasks;
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class Task1NumberGame {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Random random = new Random();
+        int a = random.nextInt(1, 100) + 1; // Generating random number
+
+        int attempts = 0;// keep track of total attempts
+        boolean correctGuess = false; // track if guessed correctly
+
+        while (!correctGuess) {
+            System.out.println("You have " +3+ " attempts to guess the correct number:");
+            for (int i = 1; i <= 3; i++) {
+                System.out.print("Enter your guess: ");
+                int guess = sc.nextInt();
+                attempts++;
+
+                if (guess == a) {
+                    System.out.println("Your guess is correct in " + attempts + " attempts!");
+                    correctGuess = true;
+                    break;
+                } else if (guess > a) {
+                    System.out.println("The assumed number is too high");
+                } else {
+                    System.out.println("The assumed number is too low");
+                }
+            }
+
+            if (!correctGuess) {
+                System.out.println("All your attempts are exhausted!");
+                System.out.print("Do you want to continue to guess? (yes/no): ");
+                String response = sc.next();
+                if (!response.equalsIgnoreCase("yes")) {
+                    System.out.println("Finished! The correct number is: " + a);
+                    break;
+                }
+            }
+        }
+        sc.close();
+    }
+}
