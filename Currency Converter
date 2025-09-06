@@ -1,0 +1,58 @@
+package codsofttasks;
+
+import java.util.Scanner;
+
+public class CurrencyConverter {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("This is a Currency Converter!");
+		System.out.println("1. USD to Rupees");
+		System.out.println("2. Rupees to USD");
+		System.out.println("3. Euro to Rupees");
+		System.out.println("4. Rupees to Euro");
+		System.out.print("Enter your choice (1 or 2 or 3 or 4): ");
+		int choice = sc.nextInt();
+
+		if (choice == 1) {
+			System.out.print("Enter the Amount in USD: ");
+			double USD = sc.nextDouble();
+			double Rupees = usdToRupee(USD);
+			System.out.println("Amount in Rupees: " + Rupees);
+		} else if (choice == 2) {
+			System.out.print("Enter the Amount in Rupees: ");
+			double Rupees = sc.nextDouble();
+			double USD = RupeeTousd(Rupees);
+			System.out.println("Amount in USD: " + USD);
+		} else if (choice == 3) {
+			System.out.print("Enter the Amount in Euro: ");
+			double EURO = sc.nextDouble();
+			double Rupees = euroToRupee(EURO);
+			System.out.println("Amount in Rupees: " + Rupees);
+		} else if (choice == 4) {
+			System.out.print("Enter the Amount in Rupees: ");
+			double Rupees = sc.nextDouble();
+			double EURO = RupeeToeuro(Rupees);
+			System.out.println("Amount in Euro: " + EURO);
+		} else {
+			System.out.println("Invalid Choice. Please enter any of the given choices.");
+		}
+		sc.close();
+	}
+
+	public static double usdToRupee(double USD) {
+		return USD * 83.17; // Example conversion rate
+	}
+
+	public static double RupeeTousd(double Rupee) {
+		return Rupee * 0.011; // Example conversion rate
+	}
+
+	public static double euroToRupee(double EURO) {
+		return EURO * 103.29; // Example conversion rate
+	}
+
+	public static double RupeeToeuro(double Rupee) {
+		return Rupee * 0.0097; // Example conversion rate
+	}
+}
